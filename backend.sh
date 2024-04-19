@@ -41,6 +41,12 @@ validate $? "Enabling the nodejs"
 dnf install nodejs -y &>>$logfilepath
 validate $? "Installation of nodejs"
 
+id expense &>>$logfilepath
+if [ $? -ne 0 ]
+then
 useradd expense &>>$logfilepath
 validate $? "Adding user expense"
+else
+echo -e "$Y User already added .... $G skipped $N"
+fi
 

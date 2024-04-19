@@ -47,7 +47,7 @@ then
 mysql_secure_installation --set-root-pass ${password} &>>$logfilepath
 validate $? "Setting MySQL Server password"
 else
-echo  -e "$Y Setting MySQL Server password .... $G skipped"
+echo  -e "$Y Setting MySQL Server password .... $G skipped $N"
 fi
 
 
