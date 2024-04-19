@@ -41,7 +41,7 @@ validate $? "Enabling MySQL Server service"
 systemctl start mysqld &>>$logfilepath
 validate $? "Starting MySQL Server service"
 
-mysql -h db.expensedevops.online -uroot -p$password -e 'show databases;'
+mysql -h db.expensedevops.online -uroot -p$password -e 'show databases;'&>>$logfilepath
 if [$0 -ne 0]
 then
 mysql_secure_installation --set-root-pass $password &>>$logfilepath
