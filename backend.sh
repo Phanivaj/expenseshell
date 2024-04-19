@@ -47,11 +47,11 @@ then
 useradd expense &>>$logfilepath
 validate $? "Adding user expense"
 else
-echo -e "$Y User already added .... $G skipped $N"
+echo -e "$Y expense User already added .... $G skipped $N"
 fi
 if [ -d /app ]
 then
-echo -e "$Y Directory already created .... $G skipped $N"
+echo -e "$Y App Directory already created .... $G skipped $N"
 else
 mkdir /app &>>$logfilepath
 validate $? "Creating App directory"
