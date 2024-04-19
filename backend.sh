@@ -51,7 +51,7 @@ echo -e "$Y User already added .... $G skipped $N"
 fi
 if [ -d /app ]
 then
-echo "$Y Directory already created .... $G skipped $N"
+echo -e "$Y Directory already created .... $G skipped $N"
 else
 mkdir /app &>>$logfilepath
 validate $? "Creating App directory"
