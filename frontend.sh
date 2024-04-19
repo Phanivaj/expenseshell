@@ -36,3 +36,5 @@ systemctl enable nginx&>>$logfilepath
 validate $? "Enabling nginx service"
 systemctl start nginx&>>$logfilepath
 validate $? "Starting nginx service"
+rm -rf /usr/share/nginx/html/*&>>$logfilepath
+validate $? "Removing the content from html folder"
