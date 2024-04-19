@@ -44,3 +44,8 @@ cd /usr/share/nginx/html &>>$logfilepath
 validate $? "Moving to html folder"
 unzip /tmp/frontend.zip&>>logfilepath
 validate $? "Unzip frontend.zip file"
+cp /home/ec2-user/expenseshell/expense.conf /etc/nginx/default.d/expense.conf&>>$logfilepath
+validate $? "Copying expense.conf file"
+systemctl restart nginx &>>$logfilepath
+validate $? "Restarting nginx service"
+
