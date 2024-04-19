@@ -64,3 +64,8 @@ rm -rf /app/*
 unzip /tmp/backend.zip &>>$logfilepath
 validate $? "Unzipping the backend.zip file"
 
+npm install &>>$logfilepath
+validate $? "Installing Node Js dependencies"
+
+cp /home/ec2-user/expenseshell/backend.service /etc/systemd/system/backend.service &>>$logfilepath
+validate $? "Copying backend.service file"
