@@ -31,10 +31,13 @@ validate(){
     echo -e "$Y $2 .....$G success $N"
    fi
 }
+
 dnf module disable nodejs -y &>>$logfilepath
 validate $? "Disabling the nodejs"
+
 dnf module enable nodejs:20 -y &>>$logfilepath
-validate $? "Enabling the nodejs
+validate $? "Enabling the nodejs"
+
 dnf install nodejs -y &>>$logfilepath
 validate $? "Installation of nodejs"
 
