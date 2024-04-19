@@ -49,8 +49,13 @@ validate $? "Adding user expense"
 else
 echo -e "$Y User already added .... $G skipped $N"
 fi
+if [ -d /app ]
+then
+echo "$Y Directory already created .... $G skipped $N"
+else
 mkdir /app &>>$logfilepath
 validate $? "Creating App directory"
+fi
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$logfilepath
 validate $? "Downloading the backend.ZIp file"
 cd /app
