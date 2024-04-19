@@ -38,3 +38,9 @@ systemctl start nginx&>>$logfilepath
 validate $? "Starting nginx service"
 rm -rf /usr/share/nginx/html/*&>>$logfilepath
 validate $? "Removing the content from html folder"
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip&>>$logfilepath
+validate $? "Downloading frontend.zip file"
+cd /usr/share/nginx/html &>>$logfilepath
+validate $? "Moving to html folder"
+unzip /tmp/frontend.zip&>>logfilepath
+validate $? "Unzip frontend.zip file"
