@@ -57,8 +57,9 @@ mkdir /app &>>$logfilepath
 validate $? "Creating App directory"
 fi
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$logfilepath
-validate $? "Downloading the backend.ZIp file"
-cd /app
+validate $? "Downloading the backend.zip file"
+cd /app &>>$logfilepath
+validate $? "Moving to App directory"
 unzip /tmp/backend.zip &>>$logfilepath
-validate $? "Unzipping the backend.zip"
+validate $? "Unzipping the backend.zip file"
 
