@@ -12,8 +12,8 @@ Y="\e[33m"
 N="\e[0m"
 echo $userid Executing $0
 echo "Execution started at $date"
-#echo "Enter password for MySql server"
-#read -s password
+echo "Enter password for MySql server"
+read -s password
 if [ $username -ne 0 ]
 then
 echo "please use root user acces for the installation"
@@ -69,3 +69,18 @@ validate $? "Installing Node Js dependencies"
 
 cp /home/ec2-user/expenseshell/backend.service /etc/systemd/system/backend.service &>>$logfilepath
 validate $? "Copying backend.service file"
+
+systemctl daemon-reload &>>$logfilepath
+validate $? "Reloading the expense daemon"
+
+systemctl start backend&>>$logfilepath
+validate $? "Starting the backend service"
+
+systemctl enable backend&>>$logfilepath
+validate $? "Enabling the backend service"
+dnf install mysql -y&>>$logfilepath
+validate $? "Installing the MySql Client"
+mysql -h db.expensedevops.online -uroot -p${password} < /app/schema/backend.sql&>>$logfilepath
+validate $? "Loading backend.sql schema"
+systemctl restart backend&>>$logfilepath
+validate $? "Restarting backend service"
