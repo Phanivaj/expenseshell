@@ -8,3 +8,5 @@ echo "process id is : $$"
 
 . other.sh
 
+echo "process id is : $$"
+echo "running the following shell and: $var"
