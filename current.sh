@@ -6,7 +6,7 @@ echo "running the following shell and: $var"
 
 echo "process id is : $$"
 
-. other.sh
+. /other.sh
 
 echo "process id is : $$"
 echo "running the following shell and: $var"
